@@ -10,10 +10,14 @@
 body {
     background-color: white;
     height: 100vh;
+    align-items: center;
+    margin: 0; /* Reset default margin */
+    padding-top: 80px; /* Add padding to the top to accommodate the fixed navbar */
 }
 
 .header {
     position: fixed;
+    background: white;
     top: 0;
     left: 0;
     width: 100%;
@@ -23,8 +27,8 @@ body {
     justify-content: space-between;
     z-index: 100;
     border-bottom: 1px solid black;
+    box-sizing: border-box; /* Include padding in the total height calculation */
 }
-
 
 .logo {
     font-size: 32px;
@@ -41,6 +45,7 @@ body {
     color: black;
     font-weight: 500;
     text-decoration: none;
+    z-index: 2;
 
 }
 
@@ -53,8 +58,82 @@ body {
     height:1.5px;
     background: black;
     transition: .3s;
+    z-index: 2;
 }
 
 .navbar a:hover::before{
     width: 100%;
+    z-index: 2;
+}
+
+.container {
+    overflow: scroll;
+    min-height: 320px;
+    margin: 80px auto 0; /* Adjust top margin for space under fixed navbar */
+    z-index: 1;
+    max-width: 90%; /* Use a percentage for responsive width */
+    border: 1px solid grey;
+    box-sizing: border-box; /* Include border in the total width/height calculation */
+}
+
+[data-tab-info] {
+    display: none;
+}
+
+.active[data-tab-info] {
+    display: block;
+}
+
+.tab-content {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+}
+
+.tabs {
+    border-bottom: 1px solid grey;
+    background-color: transparent;
+    font-size: 25px;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    display: flex;
+}
+
+.tabs span {
+    background: white;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.tabs span:hover {
+    background: white;
+    cursor: pointer;
+    color: black;
+}
+
+.track-info {
+    display: flex;
+    align-items: center; /* Vertical centering */
+}
+
+.track-info img {
+    width: 50px; /* Set the desired width */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 5px; /* Add some margin to separate image and text */
+    margin-bottom: 5px;
+    margin-top: 5px;
+    vertical-align: middle; /* Adjust the vertical alignment */
+}
+
+.track-info .track-name,
+.track-info .track-artist {
+    margin: 10px;
+}
+main {
+    
 }
