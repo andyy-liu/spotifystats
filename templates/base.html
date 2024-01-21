@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<HTML LANG="en">
+    
+<head>
+    <meta chatset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Data Landing Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style2.css')}}">
+</head>
+
+<body>
+
+    <header class="header">
+        
+        <a href="http://127.0.0.1:5000" class="logo">Stats for Spotify</a>
+
+        <nav class="navbar">
+            <a href="http://127.0.0.1:5000/tracks">Top tracks</a>
+            <a href="http://127.0.0.1:5000/artists">Top artists</a>
+            <a href="http://127.0.0.1:5000/albums">Top albums</a>
+        </nav>
+    </header>
+    <div class="container" id="container">
+        <div class="tabs">
+            <span data-tab-value="#tab_1">4 Weeks</span>
+            <span data-tab-value="#tab_2">6 Months</span>
+            <span data-tab-value="#tab_3">All Time</span>
+        </div>
+
+        <div class="tab-content">
+            <div class="tabs__tab active" id="tab_1" data-tab-info>
+                <p>
+                    {% block short %} {% endblock %}
+                </p>
+            </div>
+            <div class="tabs__tab" id="tab_2" data-tab-info>
+                <p>
+                    {% block medium %} {% endblock %}
+                </p>
+            </div>
+            <div class="tabs__tab" id="tab_3" data-tab-info>
+                <p>
+                    {% block long %} {% endblock %}
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">
+            const tabs = document.querySelectorAll('[data-tab-value]')
+            const tabInfos = document.querySelectorAll('[data-tab-info]')
+        
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = document.querySelector(tab.dataset.tabValue);
+                    tabInfos.forEach(tabInfo => {
+                        tabInfo.classList.remove('active')
+                    })
+                    target.classList.add('active');
+                })
+            })
+        </script>
+        </body>
+
+</HTML>

@@ -1,99 +1,58 @@
 <!DOCTYPE html>
-<HTML LANG="en">
-    
-<head>
-    <meta chatset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Data Landing Page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style2.css')}}">
-</head>
+{% extends "base.html" %}
+{% block short %}
+<div class="info">
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Artwork</th>
+            <th>Artist</th>
+        </tr>
+    {% for sArtist in sArtists %}
+        <tr>
+            <td>{{sArtist.number | safe}}</td>
+            <td><a href="{{ sArtist.url }}"><img src="{{sArtist.image }}"></a></td>
+            <td><span class="artist-name">{{sArtist.name | safe }}</span></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
 
-<body>
+{% block medium %}
+<div class="info">
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Artwork</th>
+            <th>Artist</th>
+        </tr>
+    {% for mArtist in mArtists %}
+        <tr>
+            <td>{{mArtist.number | safe}}</td>
+            <td><a href="{{ mArtist.url }}"><img src="{{mArtist.image }}"></a></td>
+            <td><span class="artist-name">{{mArtist.name | safe }}</span></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
 
-    <header class="header">
-        
-        <a href="http://127.0.0.1:5000" class="logo">Stats for Spotify</a>
-
-        <nav class="navbar">
-            <a href="#">Top tracks</a>
-            <a href="#">Top artists</a>
-            <a href="#">Top albums</a>
-        </nav>
-    </header>
-    <div class="container" id="container">
-        <div class="tabs">
-            <span data-tab-value="#tab_1">4 Weeks</span>
-            <span data-tab-value="#tab_2">6 Months</span>
-            <span data-tab-value="#tab_3">All Time</span>
-        </div>
-
-        <div class="tab-content">
-            <div class="tabs__tab active" id="tab_1" data-tab-info>
-                <p>
-                    {% for sArtist in sArtists %}
-                        <div class="Artist-info">
-                            <span class="Artist-name">{{sArtist.number | safe}}</span>
-                            <img src="{{sArtist.image }}">
-                            <span class="Artist-name">{{sArtist.name | safe }}</span>
-                            //
-                            <span class="Artist-artist">{{sArtist.artist | safe }}</span>
-                        </div>
-                    {% endfor %}
-                </p>
-            </div>
-            <div class="tabs__tab" id="tab_2" data-tab-info>
-                <p>
-                    {% for mArtist in mArtists %}
-                        <div class="Artist-info">
-                            <span class="Artist-name">{{mArtist.number | safe}}</span>
-                            <img src="{{mArtist.image }}">
-                            <span class="Artist-name">{{mArtist.name | safe }}</span>
-                            //
-                            <span class="Artist-artist">{{mArtist.artist | safe }}</span>
-                        </div>
-                    {% endfor %}
-                </p>
- 
-            </div>
-            <div class="tabs__tab" id="tab_3" data-tab-info>
-                <p>
-                    {% for aArtist in aArtists %}
-                        <div class="Artist-info">
-                            <span class="Artist-name">{{aArtist.number | safe}}</span>
-                            <img src="{{aArtist.image }}">
-                            <span class="Artist-name">{{aArtist.name | safe }}</span>
-                            //
-                            <span class="Artist-artist">{{aArtist.artist | safe }}</span>
-                        </div>
-                    {% endfor %}
-                </p>
- 
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-       
-        // function to get each tab details
-        const tabs = document.querySelectorAll('[data-tab-value]')
-        const tabInfos = document.querySelectorAll('[data-tab-info]')
- 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = document
-                    .querySelector(tab.dataset.tabValue);
-                tabInfos.forEach(tabInfo => {
-                    tabInfo.classList.remove('active')
-                })
-                target.classList.add('active');
-            })
-        })
-    </script>
-        <main>
-            
-            
-        </main>
-    </div>
-    
-</body>
-
-</HTML>
+{% block long %}
+<div class="info">
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Artwork</th>
+            <th>Artist</th>
+        </tr>
+    {% for aArtist in aArtists %}
+        <tr>
+            <td>{{aArtist.number | safe}}</td>
+            <td><a href="{{ aArtist.url }}"><img src="{{aArtist.image }}"></a></td>
+            <td><span class="artist-name">{{aArtist.name | safe }}</span></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
