@@ -32,3 +32,10 @@ Reason: Helped me understand how to add tracks to playlists in Spotipy<br>
 Article: Python: Three Different Ways to Store Environment Variables<br>
 Source: https://medium.com/@dataproducts/python-three-different-ways-to-store-environment-variables-15224952f31b<br>
 Reason: Couldn't figure out how to store environment variables on Windows<br>
+
+### Other Sources
+Website: Stack Overflow<br>
+Reason: Helped me troubleshoot errors and problems<br>
+
+Website: Spotipy Documentation<br>
+Reason: Helped me understand the different methods and auth flows it had to offer
