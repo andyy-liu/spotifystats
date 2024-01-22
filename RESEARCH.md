@@ -1,12 +1,12 @@
 # Research
 ### Videos
-Videos: Flask Tutorial Series (playlist) by TechWithTim\
-Source: https://www.youtube.com/watch?v=mqhxxeeTbu0&list=PLzMcBGfZo4-n4vJJybUVV3Un_NFS5EOgX\
-Reason: Wanted to learn the fundamentals of Flask in a more audio/visual way\
+Videos: Flask Tutorial Series (playlist) by TechWithTim<br>
+Source: https://www.youtube.com/watch?v=mqhxxeeTbu0&list=PLzMcBGfZo4-n4vJJybUVV3Un_NFS5EOgX<br>
+Reason: Wanted to learn the fundamentals of Flask in a more audio/visual way<br>
 
-Video: Python Spotify API #1 - Everything You Need To Know About OAuth2 by Jason Goodman
-Source: https://www.youtube.com/watch?v=g6IAGvBZDkE&list=PLhYNDxVvF4oXa9ihs8WCzEriZsCF3Pp7A
-Reason: Helped me fully understand how Spotify Authorization worked (very helpful!!)
+Video: Python Spotify API #1 - Everything You Need To Know About OAuth2 by Jason Goodman<br>
+Source: https://www.youtube.com/watch?v=g6IAGvBZDkE&list=PLhYNDxVvF4oXa9ihs8WCzEriZsCF3Pp7A<br>
+Reason: Helped me fully understand how Spotify Authorization worked (very helpful!!)<br>
 
 Video Python Spotify API #2 - Setting Up The Endpoints by Jason Goodman
 Source: https://www.youtube.com/watch?v=XZA_s-vfGKQ
