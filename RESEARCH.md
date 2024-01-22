@@ -20,6 +20,14 @@ Video: How to Create Navbar in HTML and CSS
 Source: https://www.youtube.com/watch?v=2DVkNvVcQAU&t=195s
 Reason: Wanted to make a navbar -_-
 
+Video: Flask Tutorial #4 - HTTP Methods (GET/POST) & Retrieving Form Data by TechWithTim
+Source: https://youtu.be/9MHYHgh4jYc?si=QyBt0IN_3pZBR-_e
+Reason: Needed to know how to implement user input in Flask
+
+Video: Spotify OAuth: Automating Discover Weekly Playlist - Full Tutorial by Synsation
+Source: https://youtu.be/mBycigbJQzA?si=O0rsKV3lJdiFw5_A
+Reason: Helped me understand how to add tracks to playlists in Spotipy
+
 ### Articles
 Article: Python: Three Different Ways to Store Environment Variables
 Source: https://medium.com/@dataproducts/python-three-different-ways-to-store-environment-variables-15224952f31b
