@@ -117,10 +117,12 @@ def archive():
 
         user_id = spObject.current_user()['id']
         song_uris = []
-        archive_playlist = spObject.user_playlist_create(user_id, 'Archive', public='False', description=f'Collection of songs from the past {num_playlist} playlists')
+        archive_playlist = spObject.user_playlist_create(user_id, 'archive', public='False', description=f'collection of all songs from the past {num_playlist} playlists')
         archive_id = archive_playlist['id']
 
         for playlist in playlists['items']:
+            if playlist['name'] =='archive':
+                continue
             tmp_id = playlist['id']
             tmp = spObject.playlist_items(tmp_id, fields='items.track.id')
             for song in tmp['items']:
