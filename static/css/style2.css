@@ -131,3 +131,41 @@ th, td {
     cursor:pointer
 }
 
+.box {
+    background-color: white;
+    border: 2px solid black; /* You can adjust the border width */
+    border-radius: 30px;
+    width: 768px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    min-height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box form {
+    text-align: center;
+}
+
+.box input[type="text"],
+.box input[type="submit"] {
+    padding: 10px; /* Add padding to text and submit inputs */
+    margin: 5px 0; /* Add spacing between inputs */
+    border: 1px solid #ccc; /* Add a border to the input fields */
+    border-radius: 5px; /* Add rounded corners to the input fields */
+}
+.box input[type="text"] {
+    font-size: 30px;
+}
+.box input[type="submit"] {
+    background-color: #4CAF50; /* Set a background color for the submit button */
+    color: white; /* Set text color for the submit button */
+    cursor: pointer; /* Change cursor to a pointer on hover */
+    font-size: 20px
+}

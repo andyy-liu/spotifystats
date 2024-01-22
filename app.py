@@ -8,7 +8,7 @@ load_dotenv()
 client_id = os.environ['SPOTIPY_CLIENT_ID']
 client_secret = os.environ['SPOTIPY_CLIENT_SECRET']
 redirect_uri = os.environ['SPOTIPY_REDIRECT_URI']
-scope = 'user-library-read playlist-modify-public playlist-modify-private user-read-currently-playing user-top-read' # what the app gets access to
+scope = 'user-library-read playlist-modify-public playlist-modify-private user-top-read' # what the app gets access to
 
 app = Flask(__name__)
 
@@ -27,15 +27,15 @@ def login():
                                                redirect_uri = redirect_uri,
                                                scope=scope, 
                                                cache_handler=cache_handler, 
-                                               show_dialog=True)
+                                               show_dialog=True) 
 
-    if request.args.get("code"): # redirects from Spotify auth page
-        auth_manager.get_access_token(request.args.get("code"))
+    if request.args.get("code"): # checks if user has "code" which is what is obtained from the auth_url
+        auth_manager.get_access_token(request.args.get("code")) # exchanges url for access token which is what allows the user to make requests
         return redirect('/tracks')
 
-    if not auth_manager.validate_token(cache_handler.get_cached_token()): # check for token - if none then gets auth_url and sends to user
-        auth_url = auth_manager.get_authorize_url()
-        return redirect(auth_url)
+    if not auth_manager.validate_token(cache_handler.get_cached_token()): # check for token - if none proceed to next line
+        auth_url = auth_manager.get_authorize_url() # pulls auth_url 
+        return redirect(auth_url) # redirects user to auth_url page
 
     spObject = spotipy.Spotify(auth_manager=auth_manager) # if signed in already, sends to data page
     return redirect('/tracks')
@@ -103,6 +103,41 @@ def topArtists():
                 aArtists.append(artist_info)
             ctr += 1
     return render_template("artists.html", sArtists=sArtists, mArtists=mArtists, aArtists=aArtists)
+
+@app.route('/archive', methods=["POST","GET"])
+def archive():
+    if request.method == "POST":
+        num_playlist = request.form["nm"]
+        cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
+        auth_manager = spotipy.oauth2.SpotifyOAuth(cache_handler=cache_handler)
+
+        spObject = spotipy.Spotify(auth_manager=auth_manager)
+
+        playlists = spObject.current_user_playlists(limit=num_playlist)
+
+        user_id = spObject.current_user()['id']
+        song_uris = []
+        archive_playlist = spObject.user_playlist_create(user_id, 'Archive', public='False', description=f'Collection of songs from the past {num_playlist} playlists')
+        archive_id = archive_playlist['id']
+
+        for playlist in playlists['items']:
+            tmp_id = playlist['id']
+            tmp = spObject.playlist_items(tmp_id, fields='items.track.id')
+            for song in tmp['items']:
+                try:
+                    song_uri = song['track']['id']
+                    song_uris.append(song_uri)
+                except Exception as e:
+                    print(f"Error in processing song: {e}")
+
+        batch_size = 100
+        for i in range(0, len(song_uris), batch_size):
+            batch_uris = song_uris[i:i + batch_size]
+            spObject.playlist_add_items(archive_id, batch_uris)
+        success="Success!"
+        return render_template("archive.html", hooray=success)
+    else:
+        return render_template("archive.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<HTML LANG="en">
+    
+<head>
+    <meta chatset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Data Landing Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style2.css')}}">
+</head>
+
+<body>
+
+    <header class="header">
+        
+        <a href="http://127.0.0.1:5000" class="logo">Stats for Spotify</a>
+
+        <nav class="navbar">
+            <a href="http://127.0.0.1:5000/tracks">Top tracks</a>
+            <a href="http://127.0.0.1:5000/artists">Top artists</a>
+            <a href="http://127.0.0.1:5000/newrelease">New Releases</a>
+        </nav>
+    </header>
+    <div class="box">
+        <form action="" method="post">
+            <p>Input the number of playlists you'd like archived:</p>
+            <p><input type="text" name="nm" /></p>
+            <p><input type="submit" value="submit" /></p>
+        </form>
+        <h1 class="success">{{ hooray }}</h1>
+    </body>
+
+    </HTML>
